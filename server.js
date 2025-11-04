@@ -4,7 +4,7 @@ import axios from "axios";
 const app = express();
 app.use(express.json());
 
-const GEMINI_API_KEY = "AIzaSyDjMUbcpxt4R6Gclgi7w7ykbN-Fx2QCKw4";
+const GEMINI_API_KEY = "AIzaSyCpp65YPn73c1E9yCQsx56oDUz5NEARkwk";
 
 app.get("/", (req, res) => {
   res.send(" Gemini 2.5 Flash Server is running!");
