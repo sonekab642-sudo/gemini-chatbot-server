@@ -1,13 +1,15 @@
 import express from "express";
 import axios from "axios";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+app.use(cors()); // ✅ ব্রাউজার থেকে রিকুয়েস্ট অনুমতি দেবে
 
 const GEMINI_API_KEY = "AIzaSyCpp65YPn73c1E9yCQsx56oDUz5NEARkwk";
 
 app.get("/", (req, res) => {
-  res.send(" Gemini 2.5 Flash Server is running!");
+  res.send("🧠 Gemini 2.5 Flash Server is running!");
 });
 
 app.post("/chat", async (req, res) => {
@@ -20,11 +22,7 @@ app.post("/chat", async (req, res) => {
     const response = await axios.post(
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY,
       {
-        contents: [
-          {
-            parts: [{ text: userMessage }]
-          }
-        ]
+        contents: [{ parts: [{ text: userMessage }] }]
       }
     );
 
@@ -40,4 +38,4 @@ app.post("/chat", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
